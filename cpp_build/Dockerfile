@@ -8,7 +8,7 @@ RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt install -y gcc-9
 RUN apt install -y g++-9
 RUN apt install -y gcc-9-multilib
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 10
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 20
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 20
 RUN apt install -y git
 

@@ -5,11 +5,13 @@ FROM ubuntu:18.04
 RUN apt update -y \
  && apt install -y software-properties-common \
  && add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+ && apt update -y \
  && apt install -y gcc-9 \
  && apt install -y g++-9 \
  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 20 \
  && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 20 \
- && apt install -y gcc-9-multilib
+ && apt install -y gcc-9-multilib \
+ && apt install -y g++-9-multilib
 
 # git
 RUN apt install -y git

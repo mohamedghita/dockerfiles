@@ -54,7 +54,5 @@ RUN version=1.9.0 \
   && apt install -y python \
   && apt install -y ant \
   && yes | ./install_no_sudo.sh \
-  && cd /opt && rm -rf /opt/sdk-${version}* \
-  && rm -rf /opt/default-jdk \
-  && ln -s /opt/jdk1.6.0_45 /opt/default-jdk \
-  && ls ~/.m2
+  && cd /opt && rm -rf /opt/sdk-${version}*
+  

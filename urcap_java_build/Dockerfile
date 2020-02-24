@@ -7,41 +7,16 @@ RUN apt-get update \
   && apt install -y wget \
   && apt install -y unzip
 
-# install java 6 and 8
-RUN cd /opt \
-  && wget https://www.dropbox.com/s/fyi45uruw277nls/jdk-6u45-linux-x64.bin \
-  && chmod +x ./jdk-6u45-linux-x64.bin \
-  && ./jdk-6u45-linux-x64.bin \
-  && rm ./jdk-6u45-linux-x64.bin \
-  && wget https://www.dropbox.com/s/gyd06y6lkj1pvum/jdk-8u241-linux-x64.tar \
-  && tar -xf ./jdk-8u241-linux-x64.tar \
-  && rm ./jdk-8u241-linux-x64.tar \
-  && rm -rf /opt/default-jdk \
-  && ln -s /opt/jdk1.8.0_241 /opt/default-jdk
-#  && rm -rf /opt/default-jdk \
-#  && ln -s /opt/jdk1.6.0_45 /opt/default-jdk
-  
-ENV JAVA_HOME="/opt/default-jdk"
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
-
-# maven ${version}
-RUN version=3.2.5 \
-  && cd /opt \
-  && rm -rf /opt/pache-maven* \
-  && wget https://downloads.apache.org/maven/maven-3/${version}/binaries/apache-maven-${version}-bin.tar.gz \
-  && tar -xf apache-maven-${version}-bin.tar.gz \
-  && rm apache-maven-${version}-bin.tar.gz \
-  && rm -rf apache-maven \
-  && ln -s apache-maven-${version} apache-maven
-
-ENV M2_HOME="/opt/apache-maven" \
-    MAVEN_HOME="/opt/apache-maven"
-ENV PATH="${M2_HOME}/bin:${PATH}"
+# install java 8 and maven
+RUN apt update -y \
+ && apt install -y software-properties-common \
+ && add-apt-repository ppa:openjdk-r/ppa \
+ && apt update \
+ && apt install -y openjdk-8-jdk \
+ && apt install -y maven
 
 # URCAP
 RUN version=1.9.0 \
-  && rm -rf /opt/default-jdk \
-  && ln -s /opt/jdk1.8.0_241 /opt/default-jdk \
   && cd /opt \
   && rm -rf /opt/sdk-${version}* \
   && wget https://urplus-developer-site.s3-eu-west-1.amazonaws.com/sdk/sdk-${version}.zip \

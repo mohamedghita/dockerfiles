@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
-# docker build -t urcap /Users/mohamedghita/Devel/dockerfiles/urcap_java
+# docker build -t mohamedghita/build:urcap_java_build /Users/mohamedghita/Devel/dockerfiles/urcap_java_build
+# docker push mohamedghita/build:urcap_java_build
 
 # update apt and 
 RUN apt-get update \

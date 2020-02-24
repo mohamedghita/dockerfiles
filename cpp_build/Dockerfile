@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
-# docker build -t cpp_build_linux -f /Users/mohamedghita/Devel/conan-radalytica/conan-config/cpp_build.dockerfile .
+# docker build -t mohamedghita/build:cpp_build /Users/mohamedghita/Devel/dockerfiles/cpp_build/
+# docker push mohamedghita/build:cpp_build
 
 # gcc-9
 RUN apt update -y \

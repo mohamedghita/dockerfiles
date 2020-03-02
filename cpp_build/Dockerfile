@@ -24,7 +24,8 @@ RUN apt update -y \
  && cd /tmp \
  && wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
- && ./llvm.sh ${version}
+ && ./llvm.sh ${version}\
+ && rm ./llvm.sh
 
 
 # conan
@@ -39,5 +40,6 @@ RUN apt install -y wget \
   && apt update \
   && apt install -y cmake
 
+RUN apt autoremove -y
 
 

@@ -19,13 +19,15 @@ RUN apt update -y \
  && apt install -y gcc-9-multilib \
  && apt install -y g++-9-multilib
 
- # llvm-9
+ # llvm-9 && libc++-dev
  RUN version=9\
  && cd /tmp \
  && wget https://apt.llvm.org/llvm.sh \
  && chmod +x llvm.sh \
  && ./llvm.sh ${version}\
- && rm ./llvm.sh
+ && rm ./llvm.sh\
+ && apt install -y libc++-dev\
+ && apt install -y libc++abi-dev
 
 
 # conan

@@ -2,6 +2,11 @@ FROM ubuntu:18.04
 # docker build -t mohamedghita/build:cpp_build /Users/mohamedghita/Devel/dockerfiles/cpp_build/
 # docker push mohamedghita/build:cpp_build
 
+# packages
+RUN apt update -y \
+ && apt install -y wget \
+ && apt install -y git
+
 # gcc-9
 RUN apt update -y \
  && apt install -y software-properties-common \
@@ -14,8 +19,13 @@ RUN apt update -y \
  && apt install -y gcc-9-multilib \
  && apt install -y g++-9-multilib
 
-# git
-RUN apt install -y git
+ # llvm-9
+ RUN version=9\
+ && cd /tmp \
+ && wget https://apt.llvm.org/llvm.sh \
+ && chmod +x llvm.sh \
+ && ./llvm.sh ${version}
+
 
 # conan
 RUN apt install -y python3-pip \

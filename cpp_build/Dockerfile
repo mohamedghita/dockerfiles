@@ -27,7 +27,9 @@ RUN apt update -y \
  && ./llvm.sh ${version}\
  && rm ./llvm.sh\
  && apt install -y libc++-dev\
- && apt install -y libc++abi-dev
+ && apt install -y libc++abi-dev\
+ && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 20 \
+ && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 20
 
 
 # conan

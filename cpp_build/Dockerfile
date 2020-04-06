@@ -34,8 +34,7 @@ RUN apt update -y \
 
 # conan
 RUN apt install -y python3-pip \
-  && pip3 install conan \
-  && conan config install -sf=linux https://mohamed_ghita@bitbucket.org/radalytica/conan-config.git
+  && pip3 install conan --upgrade
 
 # cmake
 RUN apt install -y wget \

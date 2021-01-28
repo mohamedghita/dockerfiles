@@ -38,10 +38,9 @@ RUN apt install -y python3-pip \
 
 # cmake
 RUN apt install -y wget \
-  && wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - \
-  && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
-  && apt update \
-  && apt install -y cmake
+  && wget https://github.com/Kitware/CMake/releases/download/v3.19.3/cmake-3.19.3-Linux-x86_64.sh \
+  && chmod +x ./cmake-3.19.3-Linux-x86_64.sh \
+  && ./cmake-3.19.3-Linux-x86_64.sh --prefix=/usr --skip-license
 
 RUN apt autoremove -y
 
